@@ -204,6 +204,7 @@ char *modify_motive(char *content, edit_ll_t *list_of_edits)
             // question is, how can we find the point of insertion
             // knowing that there could be edits before and after...
             insert_edit(modified_motive, curr_edit);
+            write_cursor_ptr += curr_edit->diff;
         }
     }
     strcpy(write_cursor_ptr, read_cursor_ptr);
