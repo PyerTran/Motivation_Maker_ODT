@@ -5,13 +5,16 @@ Usage : ./Motivation_Maker *.odt
 Requires : libzip-dev
 
 What is an ODT file ?
+
 It is the default format for Libre Office word
 From a technical stand point it is a Archive containing a plethora of files.
 source : https://opensource.com/article/22/8/odt-files
 
 As we aim to simply modify the the content of the ODT file, we focus on the content.xml, the file originally parsed like a HTML page, not human readable.
 
+
 How can we parse content.xml ?
+
 First of we use strstr to find the first occurence of the TAG we need to replace before offseting the string pointer to after TAG before calling another strstr.
 The man advantage of this technic is twofold:
 - enables us to not cycle through every character in the text
@@ -21,7 +24,9 @@ These informations are packed in linked list called a list of edits
 
 Although now we know where the TAGs are simply writing over them would naive as the desired words may not have the same size, in otherwords we need to create a new string from scrath with the right size.
 
+
 How can we modify the content ?
+
 As we now know where the all the TAGs are in the text we must, calculate the size of the new string, we simply sum of the difference between TAGs and replacer_strings
 The idea to "modify" the content will be to copy the ORIGINAL STRING into the new one write the replacer_string whenever we come across a TAG.
 But as we already have the size of the NEW STRING alloc'd, it is more efficient to use strncpy, and our list of edits
