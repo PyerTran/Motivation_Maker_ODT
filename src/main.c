@@ -56,8 +56,7 @@ int main(int argc, char**argv)
     // end_exploitation
     end_exploitation(archive, content);
     // free motive
-    //free_motive_content(&motivation_maker);
-    //free(modified_content);
+    free_motive_content(&motivation_maker);
     free_edits(list_of_edits);
 
     return 0;

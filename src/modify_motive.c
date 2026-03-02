@@ -203,6 +203,7 @@ char *modify_motive(char *content, edit_ll_t *list_of_edits)
             // insert an edit here, pain in the ass
             // question is, how can we find the point of insertion
             // knowing that there could be edits before and after...
+            write_cursor_ptr[1] = '\0';
             insert_edit(modified_motive, curr_edit);
             write_cursor_ptr += curr_edit->diff;
         }
@@ -219,6 +220,7 @@ void free_edits(edit_ll_t *list_of_edits)
     while(list_of_edits != NULL)
     {
         temp = list_of_edits;
+        free(temp->edit);
         list_of_edits = list_of_edits->next;
         free(temp);
     }

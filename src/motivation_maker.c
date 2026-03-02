@@ -32,9 +32,7 @@ void free_motive_content(moti_mak_t *motive)
 {
     for (int i = 0; i < motive->arg_count; i += 1) {
         free(motive->Replacer_str[i]);
-        
     }
     free(motive->Replacer_str);
-
 }
 
